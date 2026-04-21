@@ -1,44 +1,47 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import { Leaf } from 'lucide-react';
-import styles from './Layout.module.css';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Recycle, ArrowRight } from 'lucide-react';
+import { Card, Button } from '../shared';
+import styles from './Post.module.css';
 
-export const Header = () => (
-    <header className={styles.header}>
-        <Link to="/" className={styles.logo}>
-            <Leaf size={28} />
-            <span>Cycle & Sustain</span>
-        </Link>
-        <nav className={styles.nav}>
-            <NavLink to="/" className={({ isActive }) => isActive ? styles.activeLink : styles.navLink}>Home</NavLink>
-            <NavLink to="/posts" className={({ isActive }) => isActive ? styles.activeLink : styles.navLink}>Eco-Tips</NavLink>
-            <NavLink to="/create-post" className={({ isActive }) => isActive ? styles.activeLink : styles.navLink}>Share Hack</NavLink>
-            <NavLink to="/about" className={({ isActive }) => isActive ? styles.activeLink : styles.navLink}>About</NavLink>
-        </nav>
-    </header>
-);
+export const PostCard = ({ post }) => {
+    const [liked, setLiked] = useState(false);
 
-export const Sidebar = ({ children }) => (
-    <aside className={styles.sidebar}>
-        {children}
-    </aside>
-);
-
-export const Footer = () => (
-    <footer className={styles.footer}>
-        <p>&copy; {new Date().getFullYear()} Cycle & Sustain: The Zero-Waste Collective. Together for a greener planet.</p>
-    </footer>
-);
-
-export const Layout = ({ children, sidebar }) => (
-    <div className={styles.container}>
-        <Header />
-        <main className={styles.mainWrapper}>
-            <div className={styles.content}>
-                {children}
+    return (
+        <Card hover className={styles.postCard}>
+            <h3 className={styles.postTitle}>{post.title}</h3>
+            <p className={styles.postBody}>{post.body}</p>
+            <div className={styles.postFooter}>
+                <button
+                    className={`${styles.likeButton} ${liked ? styles.liked : ''}`}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        setLiked(!liked);
+                    }}
+                >
+                    <Recycle size={20} />
+                    <span>{liked ? 'Sustained!' : 'Sustain'}</span>
+                </button>
+                <Link to={`/posts/${post.id}`}>
+                    <Button variant="secondary" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        Details <ArrowRight size={16} />
+                    </Button>
+                </Link>
             </div>
-            {sidebar && <Sidebar>{sidebar}</Sidebar>}
-        </main>
-        <Footer />
-    </div>
-);
+        </Card>
+    );
+};
+
+export const PostList = ({ posts, loading, error }) => {
+    if (loading) return <div className={styles.loading}>Gathering eco-tips...</div>;
+    if (error) return <div className={styles.error}>Could not retrieve tips: {error}</div>;
+    if (!posts || posts.length === 0) return <div className={styles.loading}>Start sharing your hacks!</div>;
+
+    return (
+        <div className={styles.postList}>
+            {posts.map(post => (
+                <PostCard key={post.id} post={post} />
+            ))}
+        </div>
+    );
+};
