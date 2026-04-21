@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-forest: #2d4a22;
+  --color-sage: #4a6741;
+  --color-leaf: #8da05e;
+  --color-earth: #6b4f3b;
+  --color-cream: #f4f1ea;
+  --color-sand: #e8e2d6;
+}
+
+body {
+  font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-cream);
+  color: var(--color-forest);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Libre+Baskerville', serif;
+}
+
+button {
+  font-family: inherit;
+}
