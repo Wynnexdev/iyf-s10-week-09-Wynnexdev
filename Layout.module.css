@@ -1,0 +1,129 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: inherit;
+    background-image:
+        radial-gradient(#dcd3c1 0.5px, transparent 0.5px),
+        radial-gradient(#dcd3c1 0.5px, #f4f1ea 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+}
+
+.header {
+    background-color: rgba(244, 241, 234, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #dcd3c1;
+    padding: 1.25rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-family: 'Libre+Baskerville', serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #2d4a22;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.navLink {
+    text-decoration: none;
+    color: #6b4f3b;
+    font-weight: 500;
+    transition: all 0.2s;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.navLink::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #8da05e;
+    transition: width 0.3s;
+}
+
+.navLink:hover::after,
+.activeLink::after {
+    width: 100%;
+}
+
+.navLink:hover,
+.activeLink {
+    color: #2d4a22;
+}
+
+.mainWrapper {
+    display: flex;
+    flex: 1;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    gap: 3rem;
+}
+
+.content {
+    flex: 1;
+    min-width: 0;
+}
+
+.sidebar {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.footer {
+    background-color: #2d4a22;
+    padding: 3rem 2rem;
+    text-align: center;
+    color: #f4f1ea;
+    margin-top: 4rem;
+}
+
+.footer p {
+    opacity: 0.8;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 992px) {
+    .mainWrapper {
+        flex-direction: column;
+        padding: 2rem 1rem;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .header {
+        flex-direction: column;
+        gap: 1.25rem;
+        padding: 1.5rem 1rem;
+    }
+
+    .nav {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+}
