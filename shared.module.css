@@ -1,0 +1,75 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.25rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  font-family: inherit;
+}
+
+.primary {
+  background-color: #2d4a22;
+  color: #f4f1ea;
+  box-shadow: 0 4px 6px -1px rgba(45, 74, 34, 0.2);
+}
+
+.primary:hover {
+  background-color: #4a6741;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px -2px rgba(45, 74, 34, 0.3);
+}
+
+.secondary {
+  background-color: #e8e2d6;
+  color: #2d4a22;
+  border: 1px solid #dcd3c1;
+}
+
+.secondary:hover {
+  background-color: #dcd3c1;
+}
+
+.danger {
+  background-color: #a33b3b;
+  color: white;
+}
+
+.danger:hover {
+  background-color: #8a3232;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #dcd3c1;
+  border-radius: 0.75rem;
+  font-family: inherit;
+  font-size: 1rem;
+  background-color: white;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #4a6741;
+  box-shadow: 0 0 0 4px rgba(74, 103, 65, 0.1);
+}
+
+.card {
+  background-color: white;
+  border-radius: 1.25rem;
+  border: 1px solid #e8e2d6;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.cardHover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -6px rgba(107, 79, 59, 0.12);
+  border-color: #8da05e;
+}
